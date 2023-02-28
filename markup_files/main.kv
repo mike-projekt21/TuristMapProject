@@ -1,0 +1,18 @@
+#:include markup_files/homeScreen.kv
+#:include markup_files/profileScreen.kv
+#:include markup_files/searchScreen.kv
+Screen:
+    BoxLayout:
+        ScreenManager:
+            id: screen_manager
+            size_hint: 1, 1
+            pos_hint: {"top": 1, "left": 1}
+            HomeScreen:
+                name: "home"
+                id: home_screen
+            ProfileScreen:
+                name: "profile"
+                id: home_screen
+            SearchScreen:
+                name: "search"
+                id: home_screen

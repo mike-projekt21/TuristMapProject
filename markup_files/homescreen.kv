@@ -1,0 +1,20 @@
+<HomeScreen>:
+    name: 'home'
+    map_view: map_view.__self__
+    BoxLayout:
+        id: main_box
+        orientation: 'vertical'
+        MapView:
+            double_tap_zoom: True
+            id: map_view
+            zoom:10
+            lat: (55.75)
+            lon: (37.61)
+        MDBottomAppBar:
+            MDTopAppBar:
+                icon: "compass-outline"
+                type: "bottom"
+                mode: "center"
+                on_action_button: app.change_screen("home","right")
+                left_action_items: [["magnify", lambda x: app.change_screen('search',"right")]]
+                right_action_items:[["account", lambda x: app.change_screen("profile","left")]]

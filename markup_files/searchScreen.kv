@@ -1,0 +1,100 @@
+<SearchScreen>:
+    name: 'search'
+    BoxLayout:
+        orientation: 'vertical'
+        GridLayout:
+            rows: 2
+            cols: 2
+            spacing: 10
+            padding: 10
+            size_hint: 1,.3
+            TextInput:
+                hint_text: 'search'
+            Button:
+                text: 'search'
+            BoxLayout:
+                spacing: 10
+                TextInput:
+                    hint_text: 'start'
+                TextInput:
+                    hint_text: 'finish'
+            Button:
+                text: 'Make road'
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1,.3
+            Label:
+                text: "Популярное"
+                color: "black"
+                size_hint: 1,.2
+            ScrollView:
+                size_hint: 1,.8
+                do_scroll: True, False
+                GridLayout:
+                    rows: 1
+                    padding: 10
+                    spacing: 10
+                    size_hint: None,None
+                    Button:
+                        text: "button1"
+                        size: 150, 150
+                        size_hint: None, None
+                    Button:
+                        text: "button1"
+                        size: 150, 150
+                        size_hint: None, None
+                    Button:
+                        text: "button1"
+                        size: 150, 150
+                        size_hint: None, None
+                    Button:
+                        text: "button1"
+                        size: 150, 150
+                        size_hint: None, None
+                    Button:
+                        text: "button1"
+                        size: 150, 150
+                        size_hint: None, None
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 1,.3
+            Label:
+                text: "Недалеко"
+                color: "black"
+                size_hint: 1,.2
+            ScrollView:
+                size_hint: 1,.8
+                do_scroll: True, False
+                GridLayout:
+                    rows: 1
+                    padding: 10
+                    spacing: 10
+                    size_hint: None,None
+                    Button:
+                        text: "button1"
+                        size: 150, 150
+                        size_hint: None, None
+                    Button:
+                        text: "button1"
+                        size: 150, 150
+                        size_hint: None, None
+                    Button:
+                        text: "button1"
+                        size: 150, 150
+                        size_hint: None, None
+                    Button:
+                        text: "button1"
+                        size: 150, 150
+                        size_hint: None, None
+                    Button:
+                        text: "button1"
+                        size: 150, 150
+                        size_hint: None, None
+        MDBottomAppBar:
+            MDTopAppBar:
+                icon: "compass-outline"
+                type: "bottom"
+                mode: "center"
+                on_action_button: app.change_screen("home","left")
+                left_action_items: [["magnify", lambda x: app.change_screen('search',"right")]]
+                right_action_items:[["account", lambda x: app.change_screen("profile","left")]]
