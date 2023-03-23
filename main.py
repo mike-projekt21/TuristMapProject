@@ -25,15 +25,15 @@ class MainApp(MDApp):
         self.db = sqlite3.connect("TouristMap.db")
         self.cursor = self.db.cursor()
         self.cursor.execute("""CREATE TABLE IF NOT EXISTS attractions (
-                                id INTEGER PRIMARY KEY,
-                                name TEXT,
-                                address TEXT,
-                                x REAL,
-                                y REAL,
-                                image_name TEXT,
-                                information TEXT,
-                                group TEXT
-        );""")
+                                            id INTEGER PRIMARY KEY AUTOINCREMENT ,
+                                            name TEXT,
+                                            address TEXT,
+                                            x REAL,
+                                            y REAL,
+                                            image_name TEXT,
+                                            information TEXT,
+                                            group_of_attraction TEXT
+                    );""")
         self.db.commit()
     def build(self):
         return Builder.load_file('markup_files/main.kv')
