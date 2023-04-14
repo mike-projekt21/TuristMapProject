@@ -32,7 +32,7 @@ class MainApp(MDApp):
                                 y REAL,
                                 image_name TEXT,
                                 information TEXT,
-                                group TEXT
+                                group_of_attraction TEXT
         );""")
         self.db.commit()
     def build(self):
