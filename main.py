@@ -11,10 +11,17 @@ Window.size = (375, 750)
 class SearchScreen(Screen):
     def search_by_input(self, input_info):
         app = MDApp.get_running_app()
-        app.cursor.execute("""SELECT * FROM attractions WHERE address LIKE ? or name LIKE ?
-        """, (f"%{input_info}%", f"%{input_info}%"))
+        app.cursor.execute("""SELECT * FROM attractions WHERE address LIKE ? or name LIKE ?""", (f"%{input_info}%", f"%{input_info}%"))
         coordinations = app.cursor.fetchall()
         app.change_screen("home","left")
+        for attraction in coordinations:
+            app.root.ids.home_screen.ids.map_view.add_attraction(attraction)
+
+    def search_by_group(self, group_info):
+        app = MDApp.get_running_app()
+        app.cursor.execute(f"""SELECT * FROM attractions WHERE group_of_attraction == ?""", group_info)
+        coordinations = app.cursor.fetchall()
+        app.change_screen("home", "left")
         for attraction in coordinations:
             app.root.ids.home_screen.ids.map_view.add_attraction(attraction)
 
