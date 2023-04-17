@@ -18,7 +18,17 @@ class HomeMapView(MapView):
         #Get reference to main app and database
         app = MDApp.get_running_app()
         sql_statement = """SELECT * FROM attractions 
-                        WHERE x > ? AND x < ? AND y > ? AND y < ?"""
+                        WHERE x > ? AND y > ? AND x < ? AND y < ?"""
         app.cursor.execute(sql_statement, self.get_bbox())
         attractions = app.cursor.fetchall()
         print(attractions)
+        for attraction in attractions:
+            self.add_attraction(attraction)
+
+    def add_attraction(self, attraction):
+        # Create the marker
+
+        # Add marker to the map
+
+        # Keep track
+
