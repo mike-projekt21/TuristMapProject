@@ -18,11 +18,14 @@
             BoxLayout:
                 spacing: 10
                 TextInput:
+                    id: start_input
                     hint_text: 'начало'
                 TextInput:
+                    id: finish_input
                     hint_text: 'конец'
             Button:
                 text: 'Проложить маршрут'
+                on_press: root.draw_lines(root.ids.start_input.text, root.ids.finish_input.text)
         BoxLayout:
             padding: 10
             orientation: 'vertical'
