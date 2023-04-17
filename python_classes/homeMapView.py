@@ -1,6 +1,8 @@
 from kivy_garden.mapview import MapView
+from kivy_garden.mapview import MapMarkerPopup
 from kivy.clock import Clock
 from kivymd.app import MDApp
+from python_classes.attractionMarker import AttractionMarker
 import sqlite3
 
 class HomeMapView(MapView):
@@ -21,14 +23,15 @@ class HomeMapView(MapView):
                         WHERE x > ? AND y > ? AND x < ? AND y < ?"""
         app.cursor.execute(sql_statement, self.get_bbox())
         attractions = app.cursor.fetchall()
-        print(attractions)
         for attraction in attractions:
             self.add_attraction(attraction)
 
     def add_attraction(self, attraction):
         # Create the marker
-
+        lat, lon = attraction[3], attraction[4]
+        marker = AttractionMarker(lat = lat, lon = lon)
+        marker.attraction_data = attraction
         # Add marker to the map
-
+        self.add_widget(marker)
         # Keep track
 
