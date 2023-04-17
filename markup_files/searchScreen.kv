@@ -1,25 +1,30 @@
 <SearchScreen>:
     name: 'search'
+    id: search_screen
     BoxLayout:
         orientation: 'vertical'
         GridLayout:
+            padding: 10
             rows: 2
             cols: 2
             spacing: 10
             size_hint: 1,.3
             TextInput:
-                hint_text: 'search'
+                id: search_input
+                hint_text: 'Введите адрес или название'
             Button:
-                text: 'search'
+                text: 'поиск'
+                on_press: root.search_by_input(root.ids.search_input.text)
             BoxLayout:
                 spacing: 10
                 TextInput:
-                    hint_text: 'start'
+                    hint_text: 'начало'
                 TextInput:
-                    hint_text: 'finish'
+                    hint_text: 'конец'
             Button:
-                text: 'Make road'
+                text: 'Проложить маршрут'
         BoxLayout:
+            padding: 10
             orientation: 'vertical'
             size_hint: 1,.3
             Label:
@@ -110,6 +115,7 @@
                             center_x: self.parent.center_x
                             center_y: self.parent.center_y-50
         BoxLayout:
+            padding: 10
             orientation: 'vertical'
             size_hint: 1,.3
             Label:
@@ -121,7 +127,6 @@
                 do_scroll: True, False
                 GridLayout:
                     rows: 1
-                    padding: 10
                     spacing: 10
                     size_hint: None,None
                     Button:

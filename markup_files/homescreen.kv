@@ -1,10 +1,14 @@
 #:include markup_files/homeMapView.kv
 <HomeScreen>:
     name: 'home'
+    id: home_screen
     BoxLayout:
-        id: main_box
         orientation: 'vertical'
+        MDTopAppBar:
+            title: "Посмотреть всё"
+            right_action_items: [["eye", lambda x: app.root.ids.home_screen.ids.map_view.get_markers()]]
         HomeMapView:
+            id:map_view
         MDBottomAppBar:
             MDTopAppBar:
                 icon: "compass-outline"

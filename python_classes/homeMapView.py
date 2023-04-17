@@ -7,7 +7,8 @@ import sqlite3
 
 class HomeMapView(MapView):
     getting_markers_timer = None
-
+    attraction_markers = []
+    """
     def start_getting_markers(self):
         # After one second, place markers in the fild of view
         try:
@@ -15,7 +16,7 @@ class HomeMapView(MapView):
         except:
             pass
         self.getting_markers_timer = Clock.schedule_once(self.get_markers, 1)
-
+    """
     def get_markers(self, *args):
         #Get reference to main app and database
         app = MDApp.get_running_app()
@@ -24,7 +25,7 @@ class HomeMapView(MapView):
         app.cursor.execute(sql_statement, self.get_bbox())
         attractions = app.cursor.fetchall()
         for attraction in attractions:
-            self.add_attraction(attraction)
+                self.add_attraction(attraction)
 
     def add_attraction(self, attraction):
         # Create the marker
@@ -34,4 +35,8 @@ class HomeMapView(MapView):
         # Add marker to the map
         self.add_widget(marker)
         # Keep track
+        self.attraction_markers.append(marker)
 
+    def clean_all_markers(self):
+        for marker in self.attraction_markers:
+            self.remove_marker(marker)

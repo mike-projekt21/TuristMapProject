@@ -9,7 +9,14 @@ from python_classes.homeMapView import HomeMapView
 Window.size = (375, 750)
 
 class SearchScreen(Screen):
-    pass
+    def search_by_input(self, input_info):
+        app = MDApp.get_running_app()
+        app.cursor.execute("""SELECT * FROM attractions WHERE address LIKE ? or name LIKE ?
+        """, (f"%{input_info}%", f"%{input_info}%"))
+        coordinations = app.cursor.fetchall()
+        app.change_screen("home","left")
+        for attraction in coordinations:
+            app.root.ids.home_screen.ids.map_view.add_attraction(attraction)
 
 class ProfileScreen(Screen):
     pass
@@ -39,6 +46,7 @@ class MainApp(MDApp):
         return Builder.load_file('markup_files/main.kv')
 
     def change_screen(self, screen, direction):
+        self.root.ids.home_screen.ids.map_view.clean_all_markers()
         screen_manager = self.root.ids.screen_manager
         screen_manager.current = screen
         screen_manager.transition.direction = direction
